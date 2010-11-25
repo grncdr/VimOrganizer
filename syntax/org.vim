@@ -39,6 +39,15 @@ syn match boldtext '*\zs\S.\{-}\S\ze\*'
 syn match undertext '_\zs\S.\{-}\S\ze_'
 syn match lnumber '^\t*\(\d\.\)*\s\s' contained
 
+"syntax include @Vimcode $VIMRUNTIME\syntax\vim.vim
+"syntax region orgVim start='^src-vimscript' end='^end-vimscript' contains=@Vimcode
+"unlet b:current_syntax
+syntax include @Lispcode $VIMRUNTIME/syntax/lisp.vim
+"syntax region orgLisp start='^#+begin-lisp' end='^#+end_src' contains=@Lispcode
+syntax region orgLisp start='^#+begin_src\semacs-lisp' end='^#+end_src$' contains=@Lispcode
+let b:current_syntax = 'combined'
+hi orgLisp gui=bold
+
 
 " ***********************************************
 " section below is example for having subregions
