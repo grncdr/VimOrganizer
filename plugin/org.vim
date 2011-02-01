@@ -45,10 +45,8 @@ endfunction
 
 "keep all below 
 syntax on
-au! BufRead,BufNewFile *.org            set filetype=org
-au! BufRead,BufNewFile *.org            call InitBuffer()
-
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
+au BufRead,BufNewFile *.org            call org#SetOrgFileType()
 au BufRead *.org :PreLoadTags
 au BufWrite *.org :PreWriteTags
 au BufWritePost *.org :PostWriteTags
-
